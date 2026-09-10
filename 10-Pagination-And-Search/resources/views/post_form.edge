@@ -1,13 +1,13 @@
-@layout('layouts/main')
-
-@section('content')
-  <h1>{{ heading }}</h1>
-  @if(error)
-    <div class="alert alert-danger">{{ error }}</div>
-  @endif
-  <form method="post" class="col-md-8">
-    <div class="mb-3"><label class="form-label">Title</label><input class="form-control" name="title" value="{{ titleValue }}" required /></div>
-    <div class="mb-3"><label class="form-label">Content</label><textarea class="form-control" name="content" rows="8" required>{{ contentValue }}</textarea></div>
-    <button class="btn btn-primary" type="submit">Save</button>
-  </form>
+@layout.main({ title, flash, user, canCreate, resetLink, q })
+  @slot('main')
+    <h1>{{ heading }}</h1>
+    @if(error)
+      <div class="alert alert-danger">{{ error }}</div>
+    @endif
+    <form method="post" class="col-md-8">
+      <div class="mb-3"><label class="form-label">Title</label><input class="form-control" name="title" value="{{ titleValue }}" required /></div>
+      <div class="mb-3"><label class="form-label">Content</label><textarea class="form-control" name="content" rows="8" required>{{ contentValue }}</textarea></div>
+      <button class="btn btn-primary" type="submit">Save</button>
+    </form>
+  @endslot
 @end

@@ -14,6 +14,7 @@ function viewLocals(req, extra = {}) {
     canCreate: !!user,
     resetLink: true,
     detail: true,
+    q: '',
     ...extra,
   };
 }

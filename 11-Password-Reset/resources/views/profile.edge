@@ -1,21 +1,21 @@
-@layout('layouts/main')
-
-@section('content')
-  <div class="d-flex gap-3 align-items-start">
-    @if(profile.imagePath)
-      <img class="avatar" src="{{ profile.imagePath }}" alt="" />
-    @endif
-    <div>
-      <h1>{{ profile.displayName }}</h1>
-      <p class="text-muted">@{{ profile.username }}</p>
-      <p>{{ profile.bio }}</p>
-      @if(isSelf)
-        <a class="btn btn-sm btn-outline-primary" href="/profile/edit">Edit profile</a>
+@layout.main({ title, flash, user, canCreate, resetLink, q })
+  @slot('main')
+    <div class="d-flex gap-3 align-items-start">
+      @if(profile.imagePath)
+        <img class="avatar" src="{{ profile.imagePath }}" alt="" />
       @endif
+      <div>
+        <h1>{{ profile.displayName }}</h1>
+        <p class="text-muted">@{{ profile.username }}</p>
+        <p>{{ profile.bio }}</p>
+        @if(isSelf)
+          <a class="btn btn-sm btn-outline-primary" href="/profile/edit">Edit profile</a>
+        @endif
+      </div>
     </div>
-  </div>
-  <hr />
-  @each(post in posts)
-    <article class="post-card"><h2 class="h5"><a href="/posts/{{ post.id }}">{{ post.title }}</a></h2></article>
-  @endeach
+    <hr />
+    @each(post in posts)
+      <article class="post-card"><h2 class="h5"><a href="/posts/{{ post.id }}">{{ post.title }}</a></h2></article>
+    @endeach
+  @endslot
 @end

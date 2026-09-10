@@ -15,17 +15,6 @@
         <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
 
-        @if(user)
-          <li class="nav-item"><a class="nav-link" href="/profile">Profile</a></li>
-          @if(canCreate)
-            <li class="nav-item"><a class="nav-link" href="/posts/new">New post</a></li>
-          @endif
-          <li class="nav-item"><a class="nav-link" href="/logout">Log out</a></li>
-        @else
-          <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
-          <li class="nav-item"><a class="nav-link" href="/login">Log in</a></li>
-        @endif
-
       </ul>
 
     </div>
@@ -34,7 +23,7 @@
     @if(flash)
       <div class="alert alert-info">{{ flash }}</div>
     @endif
-    @!section('content')
+    {{ await $slots.main() }}
   </main>
   <footer class="container"><small class="text-muted">Canopy Journal — Free Computer Courses</small></footer>
 </body>

@@ -34,7 +34,7 @@
     @if(flash)
       <div class="alert alert-info">{{ flash }}</div>
     @endif
-    @!section('content')
+    {{ await $slots.main() }}
   </main>
   <footer class="container"><small class="text-muted">Canopy Journal — Free Computer Courses</small></footer>
 </body>
