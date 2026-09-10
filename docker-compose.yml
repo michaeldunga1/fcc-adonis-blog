@@ -1,0 +1,13 @@
+services:
+  db:
+    image: postgres:16-alpine
+    ports:
+      - "5440:5432"
+    environment:
+      POSTGRES_USER: canopy
+      POSTGRES_PASSWORD: canopy
+    volumes:
+      - ./docker/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+      - canopy_pg:/var/lib/postgresql/data
+volumes:
+  canopy_pg:
